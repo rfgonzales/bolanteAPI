@@ -2,10 +2,7 @@
 <html>
 
 <head>
-<?php 
-include_once ('con.php');
 
-?>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>Sign In | Bootstrap Based Admin Template - Material Design</title>
@@ -37,7 +34,7 @@ include_once ('con.php');
         </div>
         <div class="card">
             <div class="body">
-                <form id="sign_in" method="POST">
+                <form id="sign_in" method="POST" action='../index.php'>
                     <div class="msg">Sign in to start your session</div>
                     <div class="input-group">
                         <span class="input-group-addon">
@@ -76,6 +73,7 @@ include_once ('con.php');
             </div>
         </div>
     </div>
+
 
     <!-- Jquery Core Js -->
     <script src="../plugins/jquery/jquery.min.js"></script>

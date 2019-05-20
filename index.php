@@ -5,11 +5,35 @@
 <head>
 
 <?php
-if(!isset($_SESSION['user'])){
-    HEADER('location:'."pages/sign-in.php");
-}
-else{
+include('pages/db_connect.php');
+if(isset($_POST['username'])){
+    $username = mysqli_real_escape_string($conn,$_POST['username']);
+    $password = mysqli_real_escape_string($conn,$_POST['password']);
     
+    $sql = "SELECT `user_id` FROM users WHERE `username` = '$username' and `password` = '$password'";
+    $result = mysqli_query($conn,$sql);
+    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+    $count = mysqli_num_rows($result);
+    
+    // If result matched $myusername and $mypassword, table row must be 1 row	
+    if($count == 1) {
+        session_start();
+        $_SESSION['user'] = $username;    
+        echo "<script>alert('Welcome')</script>";
+       
+    }else {
+        $error = "Your Login Name or Password is invalid";
+        echo "<script>alert('$error')</script>";
+        
+    }
+}
+
+if(!isset($_SESSION['user'])){
+    header('location:pages/sign-in.php');
+}
+
+else{
+   
 }
 ?>
     <meta charset="UTF-8">
@@ -300,7 +324,7 @@ else{
                             <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
                             <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+                            <li><a href="pages/actions/signout.php"><i class="material-icons">input</i>Sign Out</a></li>
                         </ul>
                     </div>
                 </div>

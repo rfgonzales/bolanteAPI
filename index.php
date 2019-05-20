@@ -8,6 +8,9 @@
 if(!isset($_SESSION['user'])){
     HEADER('location:'."pages/sign-in.php");
 }
+else{
+    
+}
 ?>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">

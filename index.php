@@ -5,36 +5,42 @@
 <head>
 
 <?php
+session_start();
 include('pages/db_connect.php');
-if(isset($_POST['username'])){
-    $username = mysqli_real_escape_string($conn,$_POST['username']);
-    $password = mysqli_real_escape_string($conn,$_POST['password']);
+if(isset($_SESSION['user'])){
+    echo "<script>alert('there is a user')</script>";
     
-    $sql = "SELECT `user_id` FROM users WHERE `username` = '$username' and `password` = '$password'";
-    $result = mysqli_query($conn,$sql);
-    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-    $count = mysqli_num_rows($result);
-    
-    // If result matched $myusername and $mypassword, table row must be 1 row	
-    if($count == 1) {
-        session_start();
-        $_SESSION['user'] = $username;    
-        echo "<script>alert('Welcome')</script>";
-       
-    }else {
-        $error = "Your Login Name or Password is invalid";
-        echo "<script>alert('$error')</script>";
+}
+else{
+    if(isset($_POST['username'])){
+        $username = mysqli_real_escape_string($conn,$_POST['username']);
+        $password = mysqli_real_escape_string($conn,$_POST['password']);
         
+        $sql = "SELECT `user_id` FROM users WHERE `username` = '$username' and `password` = '$password'";
+        $result = mysqli_query($conn,$sql);
+        $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+        $count = mysqli_num_rows($result);
+        
+        // If result matched $myusername and $mypassword, table row must be 1 row	
+        if($count == 1) {
+            
+            $_SESSION['user'] = $username;    
+            echo "<script>alert('Welcome')</script>";
+        
+        }else {
+            $error = "Your Login Name or Password is invalid";
+            echo "<script>alert('$error')</script>";
+            
+        }
+    }
+    else{
+        header('location: pages/sign-in.php');
     }
 }
 
-if(!isset($_SESSION['user'])){
-    header('location:pages/sign-in.php');
-}
 
-else{
-   
-}
+
+
 ?>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">

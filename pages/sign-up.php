@@ -108,13 +108,8 @@ if (isset($_POST['UserID'], $_POST['namesurname'], $_POST['password'])){
     $username = $_POST['namesurname'];
     $password = $_POST['password'];
 
-<<<<<<< HEAD
     $sql = "INSERT INTO users (`User_ID`, `username`, `password`) VALUES ('$UserID', '$username', '$password')";
     header("localhost/gabby");
-=======
-    $sql = "INSERT INTO users (`User_ID`, `username`, `password`) VALUES ('$UserID', '$username', '$password')"; 
-    header("localhost/gabby"); 
->>>>>>> Sign-up
 
     if ($conn->query($sql) === TRUE) {
        echo "New record created successfully";

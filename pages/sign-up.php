@@ -96,14 +96,14 @@ if (isset($_POST['UserID'], $_POST['namesurname'], $_POST['password'])){
 
     $sql = "INSERT INTO users (`User_ID`, `username`, `password`) VALUES ('$UserID', '$username', '$password')";
     header("localhost/gabby");
-}
+
     if ($conn->query($sql) === TRUE) {
        echo "New record created successfully";
     }
      else {
    echo "Error: " . $sql . "<br>" . $conn->error;
     }
-
+}
 $conn->close();
 ?>
 

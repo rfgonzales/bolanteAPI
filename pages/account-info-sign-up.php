@@ -6,7 +6,7 @@
 
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Sign Up | Document Management System</title>
+    <title>Account Information | Document Management System</title>
     <!-- Favicon-->
     <link rel="icon" href="../../favicon.ico" type="image/x-icon">
 
@@ -40,7 +40,7 @@
         
         <div class="card">
             <div class="body">
-                <form id="next" method="POST" action = "account-info-sign-up.php">
+                <form id="sign_up" method="POST">
                     <div class="msg">Register a new membership</div>
                     
                     <div class="input-group">
@@ -48,7 +48,7 @@
                             <i class="material-icons">star</i>
                         </span>
                         <div class="form-line">
-                            <input type="text" class="form-control" name="UserID" placeholder="User ID" required autofocus>
+                            <input type="text" class="form-control" name="UserID" placeholder="<?php echo $UserID; ?>" autofocus>
                         </div>
                     </div>
 
@@ -57,39 +57,60 @@
                             <i class="material-icons">person</i>
                         </span>
                         <div class="form-line">
-                            <input type="text" class="form-control" name="namesurname" placeholder="Name Surname" required autofocus>
+                            <input type="text" class="form-control" name="firstname" placeholder="First Name" required autofocus>
                         </div>
                     </div>
 
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="text" class="form-control" name="middlename" placeholder="Middle Name" autofocus>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="text" class="form-control" name="lastname" placeholder="Last Name" required autofocus>
+                        </div>
+                    </div>
                     
                     <div class="input-group">
                         <span class="input-group-addon">
-                            <i class="material-icons">lock</i>
+                            <i class="material-icons">contact_phone</i>
                         </span>
                         <div class="form-line">
-                            <input type="password" class="form-control" name="password" minlength="6" placeholder="Password" required>
+                            <input type="password" class="form-control" name="contactnumber" minlength="6" placeholder="Contact Number" required>
                         </div>
                     </div>
+
                     <div class="input-group">
                         <span class="input-group-addon">
-                            <i class="material-icons">lock</i>
+                            <i class="material-icons">email</i>
                         </span>
                         <div class="form-line">
-                            <input type="password" class="form-control" name="confirm" minlength="6" placeholder="Confirm Password" required>
+                            <input type="text" class="form-control" name="email" placeholder="Email" required autofocus>
                         </div>
                     </div>
+
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">place</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="text" class="form-control" name="address" placeholder="Address" required autofocus>
+                        </div>
+                    </div>
+
                     
 
-                    <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">Next</button>
-        
-                    
+                    <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">SIGN UP</button>
 
-                        
-                        
-                        
                     <?php
-
-
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -103,12 +124,16 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-if (isset($_POST['UserID'], $_POST['namesurname'], $_POST['password'])){
-    $UserID = $_POST['UserID']; 
-    $username = $_POST['namesurname'];
-    $password = $_POST['password'];
+if (isset($_POST['firstname'], $_POST['middlename'], $_POST['lastname'], $_POST['contactnumber'], $_POST['email'], $_POST['address'] )){
+    $firstName = $_POST['firstname'];
+    $middleName = $_POST['middlename'];
+    $lastName = $_POST['lastname'];
+    $contactNum = $_POST['contactnumber'];
+    $emailX = $_POST['email'];
+    $address = $_POST['address'];
+     
 
-    $sql = "INSERT INTO users (`User_ID`, `username`, `password`) VALUES ('$UserID', '$username', '$password')"; 
+    $sql = "INSERT INTO account_information (`First_Name`, `Middle_Name`, `Last_Name`, `Contact_Number`, `Email`, `address`) VALUES ('$firstName', '$middleName', '$lastName', '$contactNum', '$emailX', '$address')"; 
     header("localhost/gabby"); 
 
     if ($conn->query($sql) === TRUE) {

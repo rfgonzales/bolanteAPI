@@ -4,20 +4,7 @@
 
 <head>
 
-<?php
-if(!isset($_SESSION['user'])){
-    HEADER('location:'."pages/sign-in.php");
-}
-else{
-    
-}
-?>
-<?php
-include 'db_connection.php';
-$conn = OpenCon();
-echo "Connected Successfully";
-CloseCon($conn);
-?>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">

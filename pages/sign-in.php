@@ -2,7 +2,13 @@
 <html>
 
 <head>
+    <?php
+    session_start();
 
+    if(isset($_SESSION['user'])){
+        header ('location:../index.php');
+    }
+    ?>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>Sign In | Bootstrap Based Admin Template - Material Design</title>
@@ -63,7 +69,7 @@
                     </div>
                     <div class="row m-t-15 m-b--20">
                         <div class="col-xs-6">
-                            <a href="sign-up.html">Register Now!</a>
+                            <a href="sign-up.php">Register Now!</a>
                         </div>
                         <div class="col-xs-6 align-right">
                             <a href="forgot-password.html">Forgot Password?</a>

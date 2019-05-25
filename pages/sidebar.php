@@ -25,13 +25,13 @@
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
                     <li class="active">
-                        <a href="index.html">
+                        <a href="index.php?page=1">
                             <i class="material-icons">home</i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="pages/typography.html">
+                        <a href="index.php?page=2">
                             <i class="material-icons">text_fields</i>
                             <span>Create Document</span>
                         </a>

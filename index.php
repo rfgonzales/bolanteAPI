@@ -64,8 +64,7 @@ else{
     <!-- Animation Css -->
     <link href="plugins/animate-css/animate.css" rel="stylesheet" />
 
-    <!-- Morris Chart Css-->
-    <link href="plugins/morrisjs/morris.css" rel="stylesheet" />
+    
 
     <!-- Custom Css -->
     <link href="css/style.css" rel="stylesheet">
@@ -103,7 +102,19 @@ else{
     <section class="content">
         
         <!-- content switcher should be in this area -->
-        <?php include ('pages/dashboard.php'); ?> <!-- DASHBOARD-->$GLOBALS
+        <?php
+        if(isset($_GET['page'])){
+            $PageNum = $_GET['page'];
+            if ($PageNum == 1) {
+                include('pages/dashboard.php'); 
+            } else if ($PageNum == 2) {
+                include("pages/create.php");
+            } else {
+                include('pages/dashboard.php'); // DASHBOARD
+            }
+        }
+        ?>
+        
 
     </section>
 
@@ -125,29 +136,15 @@ else{
     <!-- Jquery CountTo Plugin Js -->
     <script src="plugins/jquery-countto/jquery.countTo.js"></script>
 
-    <!-- Morris Plugin Js -->
-    <script src="plugins/raphael/raphael.min.js"></script>
-    <script src="plugins/morrisjs/morris.js"></script>
-
-    <!-- ChartJs -->
-    <script src="plugins/chartjs/Chart.bundle.js"></script>
-
-    <!-- Flot Charts Plugin Js -->
-    <script src="plugins/flot-charts/jquery.flot.js"></script>
-    <script src="plugins/flot-charts/jquery.flot.resize.js"></script>
-    <script src="plugins/flot-charts/jquery.flot.pie.js"></script>
-    <script src="plugins/flot-charts/jquery.flot.categories.js"></script>
-    <script src="plugins/flot-charts/jquery.flot.time.js"></script>
-
-    <!-- Sparkline Chart Plugin Js -->
-    <script src="plugins/jquery-sparkline/jquery.sparkline.js"></script>
-
+   
     <!-- Custom Js -->
     <script src="js/admin.js"></script>
-    <script src="js/pages/index.js"></script>
-
-    <!-- Demo Js -->
+    
+    
+    <!-- Custom Js --><!-- Demo Js -->
     <script src="js/demo.js"></script>
+
+    
 </body>
 
 </html>

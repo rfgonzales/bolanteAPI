@@ -8,9 +8,7 @@
 session_start();
 include('pages/db_connect.php');
 if(isset($_SESSION['user'])){
-    $user=$_SESSION['user'];
-    echo "<script>alert('welcome back $user')</script>";
-    
+    $user=$_SESSION['user'];    
 }
 else{
     if(isset($_POST['username'])){
@@ -64,7 +62,6 @@ else{
     <!-- Animation Css -->
     <link href="plugins/animate-css/animate.css" rel="stylesheet" />
 
-    
 
     <!-- Custom Css -->
     <link href="css/style.css" rel="stylesheet">

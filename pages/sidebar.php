@@ -21,22 +21,36 @@
             </div>
             <!-- #User Info -->
             <!-- Menu -->
+            <?php
+            $activeMenu = 1 ; 
+            if(isset($_GET['page'])){
+
+                $PageNum = $_GET['page'];
+                if ($PageNum == 1) {
+                    $activeMenu=1;
+                } else if ($PageNum == 2) {
+                    $activeMenu=2;
+                } else {
+                    $activeMenu=1;
+                }
+            }
+            ?>
             <div class="menu">
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
-                    <li class="active">
+                    <li class='<?php if($activeMenu==1) echo "active"; ?>' >
                         <a href="index.php?page=1">
                             <i class="material-icons">home</i>
                             <span>Dashboard</span>
                         </a>
                     </li>
-                    <li>
+                    <li class='<?php if($activeMenu==2) echo "active"; ?>'>
                         <a href="index.php?page=2">
                             <i class="material-icons">text_fields</i>
                             <span>Create Document</span>
                         </a>
                     </li>
-                    <li>
+                    <li class='<?php if($activeMenu==3) echo "active"; ?>'>
                         <a href="pages/helper-classes.html">
                             <i class="material-icons">layers</i>
                             <span>My Documents</span>

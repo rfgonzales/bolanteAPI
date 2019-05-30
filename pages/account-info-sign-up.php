@@ -1,9 +1,48 @@
 ﻿<!DOCTYPE html>
 <html>
 
-<head>
+
+<?php
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "gabby";
+$UserID ;
+$usernameZ ;
+$passwordZ ;
+   
+
+// Create connection
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+if (isset($_POST['UserID'], $_POST['namesurname'], $_POST['password'])){
+    $UserID = $_POST['UserID']; 
+    $usernameZ = $_POST['namesurname'];
+    $passwordZ = $_POST['password'];
+
+    $sql = "INSERT INTO users (`User_ID`, `username`, `password`) VALUES ('$UserID', '$usernameZ', '$passwordZ')"; 
+
+    if ($conn->query($sql) === TRUE) {
+      echo '<script>alert(" user saved in user table ")</script>';
+    }
+     else {
+   
+    }
+    
+}
 
 
+$conn->close();
+
+?>
+<head> 
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>Account Information | Document Management System</title>
@@ -30,7 +69,7 @@
 
 <body class="signup-page">
 
-    
+
 
     <div class="signup-box">
         <div class="logo">
@@ -40,7 +79,7 @@
         
         <div class="card">
             <div class="body">
-                <form id="sign_up" method="POST">
+                <form id="sign_up" method="GET" action='acc.php'>
                     <div class="msg">Register a new membership</div>
                     
                     <div class="input-group">
@@ -48,7 +87,7 @@
                             <i class="material-icons">star</i>
                         </span>
                         <div class="form-line">
-                            <input type="text" class="form-control" name="UserID" placeholder="<?php echo $UserID; ?>" autofocus>
+                            <input type="text" class="form-control" name="UserID" value = '<?php echo $UserID ?>' readonly>
                         </div>
                     </div>
 
@@ -84,7 +123,7 @@
                             <i class="material-icons">contact_phone</i>
                         </span>
                         <div class="form-line">
-                            <input type="password" class="form-control" name="contactnumber" minlength="6" placeholder="Contact Number" required>
+                            <input type="text" class="form-control" name="contactnumber" minlength="6" placeholder="Contact Number" required>
                         </div>
                     </div>
 
@@ -110,47 +149,14 @@
 
                     <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">SIGN UP</button>
 
-                    <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "gabby";
-
-// Create connection
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-if (isset($_POST['firstname'], $_POST['middlename'], $_POST['lastname'], $_POST['contactnumber'], $_POST['email'], $_POST['address'] )){
-    $firstName = $_POST['firstname'];
-    $middleName = $_POST['middlename'];
-    $lastName = $_POST['lastname'];
-    $contactNum = $_POST['contactnumber'];
-    $emailX = $_POST['email'];
-    $address = $_POST['address'];
-     
-
-    $sql = "INSERT INTO account_information (`First_Name`, `Middle_Name`, `Last_Name`, `Contact_Number`, `Email`, `address`) VALUES ('$firstName', '$middleName', '$lastName', '$contactNum', '$emailX', '$address')"; 
-    header("localhost/gabby"); 
-
-    if ($conn->query($sql) === TRUE) {
-       echo "New record created successfully";
-    }
-     else {
-   echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-}
-$conn->close();
-?>
+                    
 
 
                 </form>
             </div>
         </div>
     </div>
+    
 
     <!-- Jquery Core Js -->
     <script src="../plugins/jquery/jquery.min.js"></script>

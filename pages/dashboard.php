@@ -1,9 +1,9 @@
 <!-- Morris Chart Css-->
 <link href="plugins/morrisjs/morris.css" rel="stylesheet" />
 
-    <!-- Sparkline Chart Plugin Js -->
-    <script src="plugins/jquery-sparkline/jquery.sparkline.js"></script>
-    <script src="js/pages/index.js"></script> <!--custom JS -->
+<!-- Sparkline Chart Plugin Js -->
+<script src="plugins/jquery-sparkline/jquery.sparkline.js"></script>
+<script src="js/pages/index.js"></script> <!--custom JS -->
 <div class="container-fluid">
             <div class="block-header">
                 <h2>DASHBOARD</h2>

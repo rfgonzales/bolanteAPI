@@ -1,0 +1,1 @@
+mysqldump -u root Gabby>E:Xampp\htdocs\gabby\database.sql

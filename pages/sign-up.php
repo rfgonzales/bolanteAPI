@@ -57,7 +57,7 @@
                             <i class="material-icons">person</i>
                         </span>
                         <div class="form-line">
-                            <input type="text" class="form-control" name="namesurname" placeholder="Name Surname" required autofocus>
+                            <input type="text" class="form-control" name="namesurname" placeholder="Username" required autofocus>
                         </div>
                     </div>
 

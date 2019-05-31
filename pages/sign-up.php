@@ -84,6 +84,8 @@
         
                     
 
+<<<<<<< HEAD
+=======
                         
                         
                         
@@ -121,6 +123,7 @@ if (isset($_POST['UserID'], $_POST['namesurname'], $_POST['password'])){
 $conn->close();
 ?>
 
+>>>>>>> 9b454e61acc3b72aa5d30b787ba7e365fc0f2d7f
 
                 </form>
             </div>

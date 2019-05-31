@@ -1,10 +1,5 @@
-<!-- Morris Chart Css-->
-<link href="plugins/morrisjs/morris.css" rel="stylesheet" />
 
-<!-- Sparkline Chart Plugin Js -->
-<script src="plugins/jquery-sparkline/jquery.sparkline.js"></script>
-<script src="js/pages/index.js"></script> <!--custom JS -->
-<div class="container-fluid">
+
             <div class="block-header">
                 <h2>DASHBOARD</h2>
             </div>
@@ -312,18 +307,7 @@
                 </div>
                 <!-- #END# Browser Usage -->
             </div>
-            </div>
-    <!-- Flot Charts Plugin Js -->
-    <script src="plugins/flot-charts/jquery.flot.js"></script>
-    <script src="plugins/flot-charts/jquery.flot.resize.js"></script>
-    <script src="plugins/flot-charts/jquery.flot.pie.js"></script>
-    <script src="plugins/flot-charts/jquery.flot.categories.js"></script>
-    <script src="plugins/flot-charts/jquery.flot.time.js"></script>
-    <!-- Morris Plugin Js -->
-    <script src="plugins/raphael/raphael.min.js"></script>
-    <script src="plugins/morrisjs/morris.js"></script>
 
-    <!-- ChartJs -->
-    <script src="plugins/chartjs/Chart.bundle.js"></script>
+   
 
    

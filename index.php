@@ -62,12 +62,22 @@ else{
     <!-- Animation Css -->
     <link href="plugins/animate-css/animate.css" rel="stylesheet" />
 
-
     <!-- Custom Css -->
     <link href="css/style.css" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="css/themes/all-themes.css" rel="stylesheet" />
+    <!-- Morris Chart Css-->
+    <link href="plugins/morrisjs/morris.css" rel="stylesheet" />
+    <!-- Jquery Core Js -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap Core Js -->
+    <script src="plugins/bootstrap/js/bootstrap.js"></script>
+     <!-- Sparkline Chart Plugin Js -->
+    <script src="plugins/jquery-sparkline/jquery.sparkline.js"></script>
+    <!--<script src="js/pages/index.js"></script> custom JS -->
+    <script src="js/app.js"></script> <!--custom JS -->
+
 </head>
 
 <body class="theme-red">
@@ -99,27 +109,12 @@ else{
     <section class="content">
         
         <!-- content switcher should be in this area -->
-        <?php
-        if(isset($_GET['page'])){
-            $PageNum = $_GET['page'];
-            if ($PageNum == 1) {
-                include('pages/dashboard.php'); 
-            } else if ($PageNum == 2) {
-                include("pages/create.php");
-            } else {
-                include('pages/dashboard.php'); // DASHBOARD
-            }
-        }
-        ?>
+        <div id='MainContainer' class='container-fluid'></div>
         
 
     </section>
 
-    <!-- Jquery Core Js -->
-    <script src="plugins/jquery/jquery.min.js"></script>
-
-    <!-- Bootstrap Core Js -->
-    <script src="plugins/bootstrap/js/bootstrap.js"></script>
+    
 
     <!-- Select Plugin Js -->
     <script src="plugins/bootstrap-select/js/bootstrap-select.js"></script>
@@ -140,6 +135,18 @@ else{
     
     <!-- Custom Js --><!-- Demo Js -->
     <script src="js/demo.js"></script>
+    <!-- Flot Charts Plugin Js -->
+    <script src="plugins/flot-charts/jquery.flot.js"></script>
+    <script src="plugins/flot-charts/jquery.flot.resize.js"></script>
+    <script src="plugins/flot-charts/jquery.flot.pie.js"></script>
+    <script src="plugins/flot-charts/jquery.flot.categories.js"></script>
+    <script src="plugins/flot-charts/jquery.flot.time.js"></script>
+    <!-- Morris Plugin Js -->
+    <script src="plugins/raphael/raphael.min.js"></script>
+    <script src="plugins/morrisjs/morris.js"></script>
+
+    <!-- ChartJs -->
+    <script src="plugins/chartjs/Chart.bundle.js"></script>
 
     
 </body>

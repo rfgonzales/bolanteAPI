@@ -38,14 +38,14 @@
             <div class="menu">
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
-                    <li class='<?php if($activeMenu==1) echo "active"; ?>' >
-                        <a href="index.php?page=1">
+                    <li class='<?php if($activeMenu==1) echo "active"; ?>' id='DashboardMenu'>
+                        <a >
                             <i class="material-icons">home</i>
                             <span>Dashboard</span>
                         </a>
                     </li>
-                    <li class='<?php if($activeMenu==2) echo "active"; ?>'>
-                        <a href="index.php?page=2">
+                    <li class='<?php if($activeMenu==2) echo "active"; ?>' id='CreateMenu'>
+                        <a >
                             <i class="material-icons">text_fields</i>
                             <span>Create Document</span>
                         </a>

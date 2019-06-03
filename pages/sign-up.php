@@ -57,7 +57,7 @@
                             <i class="material-icons">person</i>
                         </span>
                         <div class="form-line">
-                            <input type="text" class="form-control" name="namesurname" placeholder="Name Surname" required autofocus>
+                            <input type="text" class="form-control" name="namesurname" placeholder="Username" required autofocus>
                         </div>
                     </div>
 
@@ -84,8 +84,6 @@
         
                     
 
-<<<<<<< HEAD
-=======
                         
                         
                         
@@ -105,9 +103,9 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-if (isset($_POST['UserID'], $_POST['namesurname'], $_POST['password'])){
+if (isset($_POST['UserID'], $_POST['username'], $_POST['password'])){
     $UserID = $_POST['UserID']; 
-    $username = $_POST['namesurname'];
+    $username = $_POST['username'];
     $password = $_POST['password'];
 
     $sql = "INSERT INTO users (`User_ID`, `username`, `password`) VALUES ('$UserID', '$username', '$password')";
@@ -123,7 +121,6 @@ if (isset($_POST['UserID'], $_POST['namesurname'], $_POST['password'])){
 $conn->close();
 ?>
 
->>>>>>> 9b454e61acc3b72aa5d30b787ba7e365fc0f2d7f
 
                 </form>
             </div>

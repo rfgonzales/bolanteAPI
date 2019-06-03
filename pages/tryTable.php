@@ -131,32 +131,35 @@ if ($conn->connect_error) {
     
 } 
 
-$sql = "SELECT `users`.`User_ID`, username, First_Name, Last_Name, Contact_Number, Email from account_information LEFT JOIN users on account_information.User_ID = users.User_ID";
+$sql = "SELECT `users`.`User_ID`, username, First_Name, Last_Name, Contact_Number, Email, account_type, `users`.`statuss`  from account_information LEFT JOIN users on account_information.User_ID = users.User_ID WHERE statuss='1'";
 
 $result = $conn-> query($sql);
 
+//echo "Error Message =". mysqli_error($conn);
 if ($result->num_rows > 0){
     while ($row = $result-> fetch_assoc()){
         echo "<tr><td>". $row['User_ID'] ."</td><td>". $row['username'] . "</td><td>". $row['First_Name']. "</td><td>". $row['Last_Name']. "</td><td>". $row['Contact_Number']. "</td><td>". $row['Email']. "</td><td>".'<button type="button" class="btn bg-deep-purple btn-circle waves-effect waves-circle waves-float">
         <i class="material-icons">settings</i>
     </button>'. "</td></tr>";
-        
+            
     }
 
 }
+
 $conn-> close();
 ?>
                                     
                                         
                                             
                                     </tbody>
-                                </table>
+                                </table>    
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- #END# Registered Users Table -->
+
 
              <!-- Verification Table -->
              <div class="row clearfix">
@@ -207,6 +210,56 @@ $conn-> close();
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                    <?php
+
+$servername = "localhost";
+$usernameY = "root";
+$password = "";
+$dbname = "gabby";
+
+   
+
+// Create connection
+
+$conn = new mysqli($servername, $usernameY, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    
+    die("Connection failed: " . $conn->connect_error); 
+    
+} 
+
+$sql = "SELECT `users`.`User_ID`, username, First_Name, Last_Name, Contact_Number, Email, account_type, `users`.`statuss`  from account_information LEFT JOIN users on account_information.User_ID = users.User_ID WHERE statuss='3'";
+
+$result = $conn-> query($sql);
+
+
+if ($result->num_rows > 0){
+    while ($row = $result-> fetch_assoc()){ 
+        
+        ?>
+    <tr>
+       
+        <td><?php echo $row['User_ID']; ?></td>
+        <td><?php echo $row['username'];  ?></td>
+        <td><?php echo $row['First_Name']; ?></td>
+        <td><?php echo $row['Last_Name']; ?></td>
+        <td><?php echo $row['Contact_Number']; ?></td>
+        <td><?php echo $row['Email']; ?></td>
+        <form action='update-act-mgmt.php'><td><button data-role ="update" onclick="confirmMe()"  name='User_ID' value= "<?php echo $row['User_ID']; ?>" type="submit" class="btn bg-blue-grey waves-effect">Accept</button> </form>
+        <button id = " <?php echo $id; ?>" type="submit" class="btn bg-blue-grey waves-effect">Reject</button></td>
+    </tr>
+    <?php
+
+    }
+
+}
+
+$conn-> close();
+?>
+
+
                                        
                                     </tbody>
                                 </table>
@@ -218,7 +271,7 @@ $conn-> close();
             <!-- #END# Verification Table -->
         </div>
     </section>
-
+    
     <!-- Jquery Core Js -->
     <script src="../../plugins/jquery/jquery.min.js"></script>
 
@@ -251,6 +304,51 @@ $conn-> close();
 
     <!-- Demo Js -->
     <script src="../../js/demo.js"></script>
+    <script type='text/javascript'>
+        function confirmMe()
+        {
+        var x = confirm("Are you sure you want to Accept");
+        if (x ===true){
+            return true;
+        }else
+        {
+            return
+        }
+        }
+    </script>
+
+    <script type='text/javascript'>
+     
+        $(document).ready(function(){
+            $('#update').click(function(){
+                var User_ID = $('#User_ID').val();
+                var username = $('#username').val();
+                var First_Name = $('#First_Name').val();
+                var Last_Name = $('#Last_Name').val();
+                var Contact_Number = $('#Contact_Number').val();
+                var Email = $('#Email').val();
+            
+                
+
+                $.ajax({
+                    url     : 'update-act-mgmt.php',
+                    method  : 'GET',
+                    data    :{User_ID : User_ID , username : username, First_Name : First_Name, Last_Name : Last_Name, Contact_Number : Contact_Number, Email : Email},
+                    success : function(response){
+                        console.log(response);
+                    }
+
+
+                })
+            }
+               
+            }
+        });
+    </script>
+
+   
+
+
 </body>
 
 </html>

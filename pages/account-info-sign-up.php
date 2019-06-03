@@ -8,10 +8,10 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "gabby";
-$UserID ;
+$UserID = $_POST['UserID'];
 $usernameZ ;
 $passwordZ ;
-   
+
 
 // Create connection
 
@@ -22,18 +22,19 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-if (isset($_POST['UserID'], $_POST['namesurname'], $_POST['password'])){
+if (isset($_POST['UserID'], $_POST['username'], $_POST['password'] )){
     $UserID = $_POST['UserID']; 
-    $usernameZ = $_POST['namesurname'];
+    $usernameZ = $_POST['username'];
     $passwordZ = $_POST['password'];
-
-    $sql = "INSERT INTO users (`User_ID`, `username`, `password`) VALUES ('$UserID', '$usernameZ', '$passwordZ')"; 
+    $account_type = 2;
+    $status = 3;
+    $sql = "INSERT INTO users (`User_ID`, `username`, `password`, `account_type`, `statuss`) VALUES ('$UserID', '$usernameZ', '$passwordZ', '$account_type', '$status')"; 
 
     if ($conn->query($sql) === TRUE) {
       echo '<script>alert(" user saved in user table ")</script>';
     }
      else {
-   
+      echo '<script>alert(" Not saved! ")</script>';
     }
     
 }

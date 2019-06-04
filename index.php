@@ -19,12 +19,17 @@ else{
         $result = mysqli_query($conn,$sql);
         $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
         $count = mysqli_num_rows($result);
+     
+
         
+        echo "<script>console.log('".$row['user_id']."');</script>";
         // If result matched $myusername and $mypassword, table row must be 1 row	
         if($count == 1) {
             
-            $_SESSION['user'] = $username;    
-            echo "<script>alert('Welcome')</script>";
+            $_SESSION['user'] = $username;  
+            $_SESSION['User_ID']=$row['user_id'];
+            echo "<script>alert('Welcome ')</script>";
+            
         
         }else {
             $error = "Your Login Name or Password is invalid";
@@ -36,9 +41,6 @@ else{
         header('location: pages/sign-in.php');
     }
 }
-
-
-
 
 ?>
 
@@ -80,7 +82,7 @@ else{
 
 </head>
 
-<body class="theme-red">
+<body class="theme-grey">
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">

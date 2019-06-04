@@ -38,22 +38,22 @@
             <div class="menu">
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
-                    <li class='<?php if($activeMenu==1) echo "active"; ?>' id='DashboardMenu'>
+                    <li  id='DashboardMenu'>
                         <a >
                             <i class="material-icons">home</i>
                             <span>Dashboard</span>
                         </a>
                     </li>
-                    <li class='<?php if($activeMenu==2) echo "active"; ?>' id='CreateMenu'>
+                    <li id='CreateMenu'>
                         <a >
                             <i class="material-icons">text_fields</i>
                             <span>Create Document</span>
                         </a>
                     </li>
-                    <li class='<?php if($activeMenu==3) echo "active"; ?>'>
-                        <a href="pages/helper-classes.html">
+                    <li id='documentMenu' >
+                        <a>
                             <i class="material-icons">layers</i>
-                            <span>My Documents</span>
+                            <span>Document Storage</span>
                         </a>
                     </li>
                     

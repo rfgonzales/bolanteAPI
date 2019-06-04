@@ -29,7 +29,7 @@ CREATE TABLE `account_information` (
   `Last_Name` varchar(45) NOT NULL,
   `Contact_Number` varchar(45) DEFAULT NULL,
   `Email` varchar(45) DEFAULT NULL,
-  `address` varbinary(45) NOT NULL,
+  `address` varchar(45) NOT NULL,
   PRIMARY KEY (`User_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -68,6 +68,30 @@ INSERT INTO `account_types` VALUES (1,'admin'),(2,'Staff');
 UNLOCK TABLES;
 
 --
+-- Table structure for table `accountstatus`
+--
+
+DROP TABLE IF EXISTS `accountstatus`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `accountstatus` (
+  `AS_ID` int(2) NOT NULL AUTO_INCREMENT,
+  `StatusName` varchar(20) NOT NULL,
+  PRIMARY KEY (`AS_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `accountstatus`
+--
+
+LOCK TABLES `accountstatus` WRITE;
+/*!40000 ALTER TABLE `accountstatus` DISABLE KEYS */;
+INSERT INTO `accountstatus` VALUES (1,'Active'),(2,'Inactive'),(3,'confirmation');
+/*!40000 ALTER TABLE `accountstatus` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `users`
 --
 
@@ -79,6 +103,7 @@ CREATE TABLE `users` (
   `username` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   `account_type` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
   PRIMARY KEY (`User_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -89,7 +114,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','admin',1);
+INSERT INTO `users` VALUES (1,'admin','admin',1,1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -102,4 +127,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-31 22:46:15
+-- Dump completed on 2019-06-04 19:43:55

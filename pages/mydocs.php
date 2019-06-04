@@ -15,6 +15,10 @@
                     <div class="hr-line-dashed"></div>
                     <h5>Folders</h5>
                     <ul class="folder-list list-group" style="padding: 0" id='folders'>
+                        <?php
+                        include ('db_connect.php');
+
+                        ?>
                         <div><button id='addFolder' data-target="#FolderNameModal" data-toggle='modal' type='button' class='btn btn-block waves-effect'><i class='material-icons' style='color:#1f91f3'>create_new_folder</i><span>Add New Folder</span></button> </div>
                     </ul>
                    

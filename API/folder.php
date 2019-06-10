@@ -1,4 +1,5 @@
-<?php include('pages/db_connect.php');
-echo $_GET('msg');
+<?php
+$msg=$_GET['MSG']; 
+echo "you said $msg";
 
 ?>

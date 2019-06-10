@@ -1,4 +1,5 @@
 
+<?php session_start() ?>
 <link href="css/mydocs/mydocs.css" rel="stylesheet">
 <div class="row clearfix">
     <div class="col-md-4">
@@ -395,5 +396,8 @@
 </form>
                     </div>
                 </div>
+                <script>
+                    loadFolders(<?php $_SESSION['user_id']; ?>);
+                </script>
             </div>
     

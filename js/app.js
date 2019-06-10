@@ -30,6 +30,7 @@ $(document).ready(function()
         $('#DashboardMenu').removeClass('active')
     });
     
+    
    
  });
  function init(){
@@ -58,6 +59,17 @@ function changeActiveFolder(){
         alert('please put proper folder name');
      }
      
+ }
+ function LoadFolders(userid){
+     
+    $.post( "API/Folder/read.php", { user_id: userid})
+    .done(function( data ) {
+        for(var i=0;i<data.Folders.length;i++){
+            var FoldrName=data.Folders[i].FolderName;
+            $('.folder-list').Prepend('<div class="list-group-item"> <a class="folder-item" href="#"  onclick="changeActiveFolder();"><i class="material-icons" >folder_open</i> <span style="Vertical-align:super">'+FoldrName+'</span> </a></div>');
+            console.log("folder:"+FoldrName+" added");
+        }
+    });
  }
  
 

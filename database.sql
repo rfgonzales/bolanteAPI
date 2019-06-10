@@ -92,6 +92,31 @@ INSERT INTO `accountstatus` VALUES (1,'Active'),(2,'Inactive'),(3,'confirmation'
 UNLOCK TABLES;
 
 --
+-- Table structure for table `folders`
+--
+
+DROP TABLE IF EXISTS `folders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `folders` (
+  `Folder_ID` int(100) NOT NULL AUTO_INCREMENT,
+  `FOLDER_NAME` varchar(50) NOT NULL,
+  `OWNER` int(20) NOT NULL,
+  PRIMARY KEY (`Folder_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `folders`
+--
+
+LOCK TABLES `folders` WRITE;
+/*!40000 ALTER TABLE `folders` DISABLE KEYS */;
+INSERT INTO `folders` VALUES (1,'Human Resource',1),(2,'Collectibles',2),(3,'Collectors',1);
+/*!40000 ALTER TABLE `folders` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `users`
 --
 
@@ -127,4 +152,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-06-04 19:43:55
+-- Dump completed on 2019-06-10 22:43:40

@@ -50,9 +50,9 @@
                             <span>Create Document</span>
                         </a>
                     </li>
-                    <li id='documentMenu' >
+                    <li id='documentMenu'  onclick="LoadFolders(<?php echo $_SESSION['User_ID']; ?>);">
                         <a>
-                            <i class="material-icons">layers</i>
+                            <i class="material-icons" onclick="LoadFolders(<?php echo $_SESSION['User_ID']; ?>);">layers</i>
                             <span>Document Storage</span>
                         </a>
                     </li>

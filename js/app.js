@@ -1,3 +1,4 @@
+
 $(document).ready(function() 
  {  
     init();
@@ -29,49 +30,126 @@ $(document).ready(function()
         $('#CreateMenu').removeClass('active')
         $('#DashboardMenu').removeClass('active')
     });
-    
-    
-   
+      
  });
+
+
  function init(){
     $.get('pages/dashboard.php', function(data) { 
         $('#MainContainer').html(data);
-    }
-    );
+    });
     $('#DashboardMenu').addClass('active')
  }
 
 function changeActiveFolder(){
     $('.list-group .list-group-item').click(function() {
-        $(this).addClass('active-folder').siblings().removeClass('active-folder');
-        
+        $(this).addClass('active-folder').siblings().removeClass('active-folder');   
     });
     console.log('clicked a folder');
 }
- function addFolder(){
+
+function addFolder(userid){
      var foldername=document.getElementById('folderName').value;
      if(foldername!=''){
-            
-        $('.folder-list').prepend('<div class="list-group-item"> <a class="folder-item" href="#"  onclick="changeActiveFolder();"><i class="material-icons" >folder_open</i> <span style="Vertical-align:super">'+foldername+'</span> </a></div>');
-        var foldername=document.getElementById('folderName').value="";
+        $.post( "API/Folder/create.php", {newFolderName:foldername})
+        .done(function( data ) {
+            console.log(data); 
+            refreshFolders(userid);
+        })
+        .fail(function(data){
+            console.log(data);
+            console.log('failed'); 
+            alert('data-communication failed');
+        });
+        document.getElementById('folderName').value="";
         $('#FolderNameModal').modal('hide');
      }else{
         alert('please put proper folder name');
      }
      
  }
+ function refreshFolders(userid){
+     $('.list-group-item').remove();
+     LoadFolders(userid);
+ }
  function LoadFolders(userid){
-     
+     console.log('loading');
     $.post( "API/Folder/read.php", { user_id: userid})
     .done(function( data ) {
         for(var i=0;i<data.Folders.length;i++){
             var FoldrName=data.Folders[i].FolderName;
-            $('.folder-list').Prepend('<div class="list-group-item"> <a class="folder-item" href="#"  onclick="changeActiveFolder();"><i class="material-icons" >folder_open</i> <span style="Vertical-align:super">'+FoldrName+'</span> </a></div>');
-            console.log("folder:"+FoldrName+" added");
+            var FolderID=data.Folders[i].FolderID;
+            insertfolder(FoldrName,FolderID);
         }
     });
  }
- 
+ function insertfolder(foldername,FolderID){
+    $('.folder-list').prepend('<div class="list-group-item" id="'+FolderID+'"> <a class="folder-item" href="#" onclick="changeActiveFolder();"><i class="material-icons" >folder_open</i> <span style="Vertical-align:super">'+foldername+'</span> </a> <span class="pull-right"><a onclick="confirmDeleteFolder('+FolderID+');"><i class="material-icons">delete</i></a></span></div>');
+    console.log("folder:"+foldername+" added with id:"+FolderID);
+ }
+ function removeFolder(folderID){
+     $('#'+folderID+'').remove();
+ }
+
+ function showFolderContext(){
+     console.log('tried');
+     Document.getElementById()
+ }
+ function confirmDeleteFolder(FolderID){
+    var resp=confirm("you sure you want to delete this folder? All of its contents will be deleted also");
+    if(resp){
+       $.post( "API/Folder/delete.php", { FolderID: FolderID})
+       .done(function( data ){
+           console.log(data);
+           console.log('delete Folder with id:'+FolderID);
+           removeFolder(FolderID);
+           showNotification('bg-blue','Folder deleted','bottom','center','','');
+       })
+       .fail(function(data){
+           console.log(data);
+           console.log('failed'); 
+           alert('data-communication failed');
+       });    
+    }
+    else{
+        console.log('Action to remove folder:'+FolderID+' was aborted');
+    }  
+}
+function showNotification(colorName, text, placementFrom, placementAlign, animateEnter, animateExit) {
+    if (colorName === null || colorName === '') { colorName = 'bg-black'; }
+    if (text === null || text === '') { text = 'Turning standard Bootstrap alerts'; }
+    if (animateEnter === null || animateEnter === '') { animateEnter = 'animated fadeInDown'; }
+    if (animateExit === null || animateExit === '') { animateExit = 'animated fadeOutUp'; }
+    var allowDismiss = true;
+
+    $.notify({
+        message: text
+    },
+        {
+            type: colorName,
+            allow_dismiss: allowDismiss,
+            newest_on_top: true,
+            timer: 1000,
+            placement: {
+                from: placementFrom,
+                align: placementAlign
+            },
+            animate: {
+                enter: animateEnter,
+                exit: animateExit
+            },
+            template: '<div data-notify="container" class="bootstrap-notify-container alert alert-dismissible {0} ' + (allowDismiss ? "p-r-35" : "") + '" role="alert">' +
+            '<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' +
+            '<span data-notify="icon"></span> ' +
+            '<span data-notify="title">{1}</span> ' +
+            '<span data-notify="message">{2}</span>' +
+            '<div class="progress" data-notify="progressbar">' +
+            '<div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
+            '</div>' +
+            '<a href="{3}" target="{4}" data-notify="url"></a>' +
+            '</div>'
+        });
+}
 
 
 

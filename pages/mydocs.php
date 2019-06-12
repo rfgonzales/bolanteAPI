@@ -390,14 +390,16 @@
                             <input type='text' class='form-control' id='folderName'>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" onclick='addFolder();'class="btn btn-link waves-effect">Create</button>
+                            <button type="button" onclick="addFolder(<?php echo $_SESSION['User_ID'] ?>);"  class="btn btn-link waves-effect">Create</button>
                             <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">close</button>
                         </div>
+                        
 </form>
                     </div>
                 </div>
                 <script>
-                    loadFolders(<?php $_SESSION['user_id']; ?>);
+                    LoadFolders(<?php echo $_SESSION['User_ID']; ?>);
                 </script>
             </div>
+    
     

@@ -20,31 +20,28 @@ class Folders{
     }
     // read products
     function read(){
- 
          // select all query
-        
         $query = "SELECT * FROM " . $this->table_name . " WHERE `Owner` = $this->userid "; 
-    
         // prepare query statement
         $stmt = $this->conn->prepare($query);
-    
         // execute query
         $stmt->execute();
-    
         return $stmt;
     }
-    function create($foldername,$userid){
+    function create($foldername){
         $tablename=$this->table_name;
-        $query = 'INSERT INTO'. $tablename .'values ("'. $foldername. '","'.$Owner.')';
+        $query = 'INSERT INTO '. $tablename .'(`Folder_Name`,`Owner`) values ("'. $foldername. '","'.$this->userid.'")';
         $stmt = $this->conn->prepare($query);
-    
         // execute query
-        if($stmt->execute()){
-            return true;
-        }
-        else{
-            return false;
-        }
+        $stmt->execute();
+        return $stmt;
+    }
+    function delete($FolderID){
+        $tablename=$this->table_name;
+        $query = 'Delete from '. $tablename .' where `folder_id`='. $FolderID;
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
         
+        return $stmt;
     }
 }

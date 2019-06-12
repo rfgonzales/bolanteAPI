@@ -130,11 +130,11 @@ else{
     <!-- Jquery CountTo Plugin Js -->
     <script src="plugins/jquery-countto/jquery.countTo.js"></script>
 
-   
     <!-- Custom Js -->
     <script src="js/admin.js"></script>
     
-    
+    <!-- Bootstrap Notify Plugin Js -->
+    <script src="plugins/bootstrap-notify/bootstrap-notify.js"></script>
     <!-- Custom Js --><!-- Demo Js -->
     <script src="js/demo.js"></script>
     <!-- Flot Charts Plugin Js -->

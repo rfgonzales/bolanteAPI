@@ -84,7 +84,7 @@ function addFolder(userid){
     });
  }
  function insertfolder(foldername,FolderID){
-    $('.folder-list').prepend('<div class="list-group-item" id="'+FolderID+'"> <a class="folder-item" href="#" onclick="changeActiveFolder();"><i class="material-icons" >folder_open</i> <span style="Vertical-align:super">'+foldername+'</span> </a> <span class="pull-right"><a onclick="confirmDeleteFolder('+FolderID+');"><i class="material-icons">delete</i></a></span></div>');
+    $('.folder-list').prepend('<div class="list-group-item" id="'+FolderID+'"> <a class="folder-item" href="#" onclick="changeActiveFolder();"><i class="material-icons" >folder_open</i> <span style="Vertical-align:super">'+foldername+'</span> </a> <span class="pull-right"><a onclick="confirmDeleteFolder('+FolderID+');"><i class="material-icons">delete</i></a><a tooltip="rename"><i class="material-icons">edit</i></a></span></div>');
     console.log("folder:"+foldername+" added with id:"+FolderID);
  }
  function removeFolder(folderID){

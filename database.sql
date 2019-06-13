@@ -103,7 +103,7 @@ CREATE TABLE `folders` (
   `FOLDER_NAME` varchar(50) NOT NULL,
   `OWNER` int(20) NOT NULL,
   PRIMARY KEY (`Folder_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -112,7 +112,7 @@ CREATE TABLE `folders` (
 
 LOCK TABLES `folders` WRITE;
 /*!40000 ALTER TABLE `folders` DISABLE KEYS */;
-INSERT INTO `folders` VALUES (1,'Human Resource',1),(2,'Collectibles',2),(5,'Collection',0),(6,'Collection',0),(14,'Almamico',1),(15,'KAPA',1);
+INSERT INTO `folders` VALUES (1,'Human Resource',1),(2,'Collectibles',2),(5,'Collection',0),(6,'Collection',0);
 /*!40000 ALTER TABLE `folders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -152,4 +152,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-06-13  2:17:03
+-- Dump completed on 2019-06-13 12:52:02

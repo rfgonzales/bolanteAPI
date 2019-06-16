@@ -150,6 +150,15 @@ function showNotification(colorName, text, placementFrom, placementAlign, animat
             '</div>'
         });
 }
+function loadFiles(){
+    alert('hoy');
+    $('#filepanes').append('<div class="file-box"><div class="file"><a href="#"><span class="corner"></span><div class="icon"><i class="img-responsive fa fa-film"></i></div><div class="file-name"> Monicas birthday.mpg4</br><small>Added: Fab 18, 2014</small></div></a></div></div> ');
+}
+
+
+//template for filebox
+
+    
 
 
 

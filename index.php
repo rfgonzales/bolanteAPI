@@ -34,6 +34,8 @@ else{
         }else {
             $error = "Your Login Name or Password is invalid";
             echo "<script>alert('$error')</script>";
+            header('location: pages/sign-in.php');
+            
             
         }
     }

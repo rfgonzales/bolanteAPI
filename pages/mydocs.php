@@ -12,7 +12,7 @@
                 </div>
                 <div class="file-manager">
                     <div class="hr-line-dashed"></div>
-                    <button class="btn btn-primary btn-block waves-effect">Upload Files</button>
+                    <button class="btn btn-primary btn-block waves-effect" onclick='upload();'>Upload Files</button>
                     <div class="hr-line-dashed"></div>
                     <h5>Folders</h5>
                     <ul class="folder-list list-group" style="padding: 0" id='folders'>

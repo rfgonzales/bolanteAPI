@@ -92,6 +92,32 @@ INSERT INTO `accountstatus` VALUES (1,'Active'),(2,'Inactive'),(3,'confirmation'
 UNLOCK TABLES;
 
 --
+-- Table structure for table `files`
+--
+
+DROP TABLE IF EXISTS `files`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `files` (
+  `FileID` int(10) NOT NULL AUTO_INCREMENT,
+  `FolderID` int(10) NOT NULL,
+  `FileName` varchar(50) NOT NULL,
+  `Directory` varchar(200) NOT NULL,
+  `FileSize` int(20) NOT NULL,
+  PRIMARY KEY (`FileID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `files`
+--
+
+LOCK TABLES `files` WRITE;
+/*!40000 ALTER TABLE `files` DISABLE KEYS */;
+/*!40000 ALTER TABLE `files` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `folders`
 --
 
@@ -103,7 +129,7 @@ CREATE TABLE `folders` (
   `FOLDER_NAME` varchar(50) NOT NULL,
   `OWNER` int(20) NOT NULL,
   PRIMARY KEY (`Folder_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -112,7 +138,7 @@ CREATE TABLE `folders` (
 
 LOCK TABLES `folders` WRITE;
 /*!40000 ALTER TABLE `folders` DISABLE KEYS */;
-INSERT INTO `folders` VALUES (1,'Human Resource',1),(2,'Collectibles',2),(5,'Collection',0),(6,'Collection',0);
+INSERT INTO `folders` VALUES (2,'Collectibles',2),(5,'Collection',0),(6,'Collection',0),(20,'Almamico',1),(23,'Raven',1),(24,'Karancho',1),(25,'KAPA',1),(26,'TGM',1);
 /*!40000 ALTER TABLE `folders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -152,4 +178,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-06-13 12:52:02
+-- Dump completed on 2019-07-02  9:06:52

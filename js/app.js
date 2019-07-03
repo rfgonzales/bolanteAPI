@@ -41,11 +41,13 @@ $(document).ready(function()
     $('#DashboardMenu').addClass('active')
  }
 
-function changeActiveFolder(){
+function changeActiveFolder(folderID){
     $('.list-group .list-group-item').click(function() {
         $(this).addClass('active-folder').siblings().removeClass('active-folder');   
     });
-    console.log('clicked a folder');
+    loadFiles(folderID);
+
+    console.log('clicked folder:'+folderID);
 }
 
 function addFolder(userid){
@@ -55,6 +57,7 @@ function addFolder(userid){
         .done(function( data ) {
             console.log(data); 
             refreshFolders(userid);
+            notify("Folder Created");
         })
         .fail(function(data){
             console.log(data);
@@ -63,6 +66,7 @@ function addFolder(userid){
         });
         document.getElementById('folderName').value="";
         $('#FolderNameModal').modal('hide');
+        
      }else{
         alert('please put proper folder name');
      }
@@ -84,17 +88,19 @@ function addFolder(userid){
     });
  }
  function insertfolder(foldername,FolderID){
-    $('.folder-list').prepend('<div class="list-group-item" id="'+FolderID+'"> <a class="folder-item" href="#" onclick="changeActiveFolder();"><i class="material-icons" >folder_open</i> <span style="Vertical-align:super">'+foldername+'</span> </a> <span class="pull-right"><a onclick="confirmDeleteFolder('+FolderID+');"><i class="material-icons">delete</i></a><a tooltip="rename"><i class="material-icons">edit</i></a></span></div>');
+    $('.folder-list').prepend('<div class="list-group-item" data-folderID="'+FolderID+'" id="'+FolderID+'"> <a class="folder-item" href="#"  onclick="changeActiveFolder('+FolderID+');"><i class="material-icons" >folder_open</i> <span style="Vertical-align:super">'+foldername+'</span> </a> <span class="pull-right"><a onclick="confirmDeleteFolder('+FolderID+');"><i class="material-icons">delete</i></a><a tooltip="rename"><i class="material-icons">edit</i></a></span></div>');
     console.log("folder:"+foldername+" added with id:"+FolderID);
+    
  }
  function removeFolder(folderID){
      $('#'+folderID+'').remove();
  }
+function upload(){
+    var folder=$('.active-folder');
+    alert(folder.attr('id'));
+    
 
- function showFolderContext(){
-     console.log('tried');
-     Document.getElementById()
- }
+}
  function confirmDeleteFolder(FolderID){
     var resp=confirm("you sure you want to delete this folder? All of its contents will be deleted also");
     if(resp){
@@ -114,6 +120,9 @@ function addFolder(userid){
     else{
         console.log('Action to remove folder:'+FolderID+' was aborted');
     }  
+}
+function notify(Message){
+    showNotification('bg-blue',Message,'bottom','center','','');
 }
 function showNotification(colorName, text, placementFrom, placementAlign, animateEnter, animateExit) {
     if (colorName === null || colorName === '') { colorName = 'bg-black'; }
@@ -150,8 +159,8 @@ function showNotification(colorName, text, placementFrom, placementAlign, animat
             '</div>'
         });
 }
-function loadFiles(){
-    alert('hoy');
+function loadFiles(FolderID){
+    $('#filepanes').empty();
     $('#filepanes').append('<div class="file-box"><div class="file"><a href="#"><span class="corner"></span><div class="icon"><i class="img-responsive fa fa-film"></i></div><div class="file-name"> Monicas birthday.mpg4</br><small>Added: Fab 18, 2014</small></div></a></div></div> ');
 }
 
